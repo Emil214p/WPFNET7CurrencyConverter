@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="atm.ico" />
+    <None Remove="exchange.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="atm.ico" />
+    <Resource Include="exchange.png" />
+  </ItemGroup>
+
+</Project>
