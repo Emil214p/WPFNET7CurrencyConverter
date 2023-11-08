@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Xml;
 
@@ -70,10 +71,18 @@ namespace WPFOneThatIsBetter
             lblCurrency.Content = "";
             txtCurrency.Focus();
         }
+        Regex regex = new Regex(@"^\d+[,|\.]{0,1}\d{0,}$");
+
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         { // makes sure that only numbers are inserted into the input boxes
-            Regex regex = new Regex(@"^\d+[,|\.]{0,1}\d{0,}$");
-            e.Handled = !regex.IsMatch(e.Text);
+
+            var text = ((TextBox)sender).Text + e.Text;
+
+            if (!regex.IsMatch(text))
+            {
+                // if not match deny new char
+                e.Handled = true;
+            }
         }
         private void Clear_Click(object sender, RoutedEventArgs e)
         { // clicking on it clears the converter
