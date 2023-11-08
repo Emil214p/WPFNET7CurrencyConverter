@@ -1,4 +1,5 @@
 ﻿// various usings that the software depends on
+using System;
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -18,10 +19,16 @@ namespace WPFOneThatIsBetter
 
         private void BindCurrency()
         {
-            // get currency rates from the nationalbank of Denmark.
             XmlDocument doc = new XmlDocument();
-            doc.Load("https://www.nationalbanken.dk/api/currencyratesxml?lang=da");
-
+            try
+            {
+                doc.Load("https://nationalbanken.dk/api/currencyratesxml?lang=da");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Converter cannot access the webpage for the national banks exchange rates.");
+                lblCurrency.Content = "Error: converter cannot access the url which has the exchange rates.";
+            }
             XmlNodeList codeNodes = doc.SelectNodes("//currency/@code");
             XmlNodeList rateNodes = doc.SelectNodes("//currency/@rate");
 

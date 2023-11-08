@@ -37,7 +37,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Right" Height="70" Width="800">
             <Label Height="30" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Converted Currency:" FontSize="16"></Label>
-            <Label Name="lblCurrency" Height="40" Width="700" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" BorderBrush="Black" BorderThickness="2"></Label>
+            <Label Name="lblCurrency" Height="42" Width="700" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" BorderBrush="Black" BorderThickness="2"></Label>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Height="60" Width="800">
