@@ -103,13 +103,27 @@ namespace WPFOneThatIsBetter
             }
             if (cmbFromCurrency.Text == cmbToCurrency.Text)
             {
-                ConvertedValue = double.Parse(txtCurrency.Text);
-                lblCurrency.Content = cmbToCurrency.Text + " " + ConvertedValue.ToString("N3");
+                try
+                {
+                    ConvertedValue = double.Parse(txtCurrency.Text);
+                    lblCurrency.Content = cmbToCurrency.Text + " " + ConvertedValue.ToString("N3");
+                }
+                catch (Exception g) 
+                {
+                    MessageBox.Show("Whitespace is not allowed.");
+                }
             }
             else
             {
-                ConvertedValue = (double.Parse(cmbFromCurrency.SelectedValue.ToString()) * double.Parse(txtCurrency.Text)) / double.Parse(cmbToCurrency.SelectedValue.ToString());
-                lblCurrency.Content = cmbToCurrency.Text + " " + ConvertedValue.ToString("N3");
+                try
+                {
+                    ConvertedValue = (double.Parse(cmbFromCurrency.SelectedValue.ToString()) * double.Parse(txtCurrency.Text)) / double.Parse(cmbToCurrency.SelectedValue.ToString());
+                    lblCurrency.Content = cmbToCurrency.Text + " " + ConvertedValue.ToString("N3");
+                } catch (Exception d)
+                {
+                    MessageBox.Show("Whitespace is not allowed.");
+                }
+
             }
         }
     }
