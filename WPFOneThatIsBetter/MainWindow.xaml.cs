@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿// various usings that the software depends on
+using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
@@ -31,6 +32,8 @@ namespace WPFOneThatIsBetter
 
             // default value = Select
             dtCurrency.Rows.Add("Select", "Select");
+            // manually inserted the Danish Krone as thats what the calculations are based on and will always have a value of 100.
+            dtCurrency.Rows.Add("DKK", "100");
             // loop through the rates to add to the software
             for (int i = 0; i < codeNodes.Count; i++)
             {
@@ -51,7 +54,7 @@ namespace WPFOneThatIsBetter
             cmbToCurrency.SelectedIndex = 0;
         }
         private void ClearControls()
-        {
+        { // will clear selected and converted currencies
             txtCurrency.Text = string.Empty;
             if (cmbFromCurrency.Items.Count > 0)
                 cmbFromCurrency.SelectedIndex = 0;
@@ -61,16 +64,16 @@ namespace WPFOneThatIsBetter
             txtCurrency.Focus();
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
+        { // makes sure that only numbers are inserted into the input boxes
             Regex regex = new Regex("[0-9]");
             e.Handled = !regex.IsMatch(e.Text);
         }
         private void Clear_Click(object sender, RoutedEventArgs e)
-        {
+        { // clicking on it clears the converter
             ClearControls();
         }
         private void Convert_Click(object sender, RoutedEventArgs e)
-        {
+        { // clicking on it converts the currency
             double ConvertedValue;
 
             if (txtCurrency.Text == null || txtCurrency.Text.Trim() == "")
