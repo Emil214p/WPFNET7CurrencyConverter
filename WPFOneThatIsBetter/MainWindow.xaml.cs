@@ -72,7 +72,7 @@ namespace WPFOneThatIsBetter
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         { // makes sure that only numbers are inserted into the input boxes
-            Regex regex = new Regex("[0-9,]");
+            Regex regex = new Regex(@"^\d+[,|\.]{0,1}\d{0,}$");
             e.Handled = !regex.IsMatch(e.Text);
         }
         private void Clear_Click(object sender, RoutedEventArgs e)
@@ -110,7 +110,7 @@ namespace WPFOneThatIsBetter
                 }
                 catch (Exception g) 
                 {
-                    MessageBox.Show("Whitespace is not allowed.");
+                    MessageBox.Show("Invalid input.");
                 }
             }
             else
@@ -121,7 +121,7 @@ namespace WPFOneThatIsBetter
                     lblCurrency.Content = cmbToCurrency.Text + " " + ConvertedValue.ToString("N3");
                 } catch (Exception d)
                 {
-                    MessageBox.Show("Whitespace is not allowed.");
+                    MessageBox.Show("Invalid input.");
                 }
 
             }
