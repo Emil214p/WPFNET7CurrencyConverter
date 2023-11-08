@@ -72,7 +72,7 @@ namespace WPFOneThatIsBetter
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         { // makes sure that only numbers are inserted into the input boxes
-            Regex regex = new Regex("[0-9]");
+            Regex regex = new Regex("[0-9,]");
             e.Handled = !regex.IsMatch(e.Text);
         }
         private void Clear_Click(object sender, RoutedEventArgs e)
